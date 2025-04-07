@@ -1,30 +1,8 @@
-'use strict';
-
-function _interopNamespace(e) {
-  if (e && e.__esModule) return e;
-  var n = Object.create(null);
-  if (e) {
-    Object.keys(e).forEach(function (k) {
-      if (k !== 'default') {
-        var d = Object.getOwnPropertyDescriptor(e, k);
-        Object.defineProperty(n, k, d.get ? d : {
-          enumerable: true,
-          get: function () {
-            return e[k];
-          }
-        });
-      }
-    });
-  }
-  n['default'] = e;
-  return Object.freeze(n);
-}
-
 const NAMESPACE = 'table-sandbox';
-const BUILD = /* table-sandbox */ { allRenderFn: true, appendChildSlotFix: false, asyncLoading: true, asyncQueue: false, attachStyles: true, cloneNodeFix: false, constructableCSS: true, cssAnnotations: true, devTools: false, element: false, event: false, experimentalScopedSlotChanges: false, experimentalSlotFixes: false, formAssociated: false, hasRenderFn: true, hostListener: false, hostListenerTarget: false, hostListenerTargetBody: false, hostListenerTargetDocument: false, hostListenerTargetParent: false, hostListenerTargetWindow: false, hotModuleReplacement: false, hydrateClientSide: false, hydrateServerSide: false, hydratedAttribute: false, hydratedClass: true, hydratedSelectorName: "hydrated", initializeNextTick: false, invisiblePrehydration: true, isDebug: false, isDev: false, isTesting: false, lazyLoad: true, lifecycle: false, lifecycleDOMEvents: false, member: true, method: false, mode: false, modernPropertyDecls: false, observeAttribute: true, profile: false, prop: true, propBoolean: false, propMutable: false, propNumber: false, propString: false, reflect: false, scoped: false, scopedSlotTextContentFix: false, scriptDataOpts: false, shadowDelegatesFocus: false, shadowDom: true, slot: false, slotChildNodesFix: false, slotRelocation: false, state: false, style: true, svg: false, taskQueue: true, transformTagName: false, updatable: true, vdomAttribute: true, vdomClass: false, vdomFunctional: false, vdomKey: true, vdomListener: false, vdomPropOrAttr: false, vdomRef: false, vdomRender: true, vdomStyle: false, vdomText: true, vdomXlink: false, watchCallback: false };
+const BUILD = /* table-sandbox */ { hydratedSelectorName: "hydrated", lazyLoad: true, updatable: true, watchCallback: false };
 
 /*
- Stencil Client Platform v4.27.2 | MIT Licensed | https://stenciljs.com
+ Stencil Client Platform v4.29.1 | MIT Licensed | https://stenciljs.com
  */
 var __defProp = Object.defineProperty;
 var __export = (target, all) => {
@@ -74,13 +52,13 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
     return module[exportName];
   }
   /*!__STENCIL_STATIC_IMPORT_SWITCH__*/
-  return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+  return import(
     /* @vite-ignore */
     /* webpackInclude: /\.entry\.js$/ */
     /* webpackExclude: /\.system\.entry\.js$/ */
     /* webpackMode: "lazy" */
     `./${bundleId}.entry.js${""}`
-  )); }).then(
+  ).then(
     (importedModule) => {
       {
         cmpModules.set(bundleId, importedModule);
@@ -383,7 +361,7 @@ var attachStyles = (hostRef) => {
   const scopeId2 = addStyle(
     elm.shadowRoot ? elm.shadowRoot : elm.getRootNode(),
     cmpMeta);
-  if ((flags & 10 /* needsScopedEncapsulation */ && flags & 2 /* scopedCssEncapsulation */ || flags & 128 /* shadowNeedsScopedCss */)) {
+  if (flags & 10 /* needsScopedEncapsulation */) {
     elm["s-sc"] = scopeId2;
     elm.classList.add(scopeId2 + "-h");
   }
@@ -431,7 +409,6 @@ function sortedAttrNames(attrNames) {
   );
 }
 var hostTagName;
-var useNativeShadowDom = false;
 var createElm = (oldParentVNode, newParentVNode, childIndex) => {
   const newVNode2 = newParentVNode.$children$[childIndex];
   let i2 = 0;
@@ -446,7 +423,7 @@ var createElm = (oldParentVNode, newParentVNode, childIndex) => {
       );
     }
     elm = newVNode2.$elm$ = win.document.createElement(
-      !useNativeShadowDom && BUILD.slotRelocation && newVNode2.$flags$ & 2 /* isSlotFallback */ ? "slot-fb" : newVNode2.$tag$
+      newVNode2.$tag$
     );
     {
       updateElement(null, newVNode2);
@@ -619,9 +596,9 @@ var insertBefore = (parent, newNode, reference) => {
 };
 var renderVdom = (hostRef, renderFnResults, isInitialLoad = false) => {
   const hostElm = hostRef.$hostElement$;
-  const cmpMeta = hostRef.$cmpMeta$;
   const oldVNode = hostRef.$vnode$ || newVNode(null, null);
-  const rootVnode = isHost(renderFnResults) ? renderFnResults : h(null, null, renderFnResults);
+  const isHostElement = isHost(renderFnResults);
+  const rootVnode = isHostElement ? renderFnResults : h(null, null, renderFnResults);
   hostTagName = hostElm.tagName;
   if (isInitialLoad && rootVnode.$attrs$) {
     for (const key of Object.keys(rootVnode.$attrs$)) {
@@ -634,7 +611,6 @@ var renderVdom = (hostRef, renderFnResults, isInitialLoad = false) => {
   rootVnode.$flags$ |= 4 /* isHost */;
   hostRef.$vnode$ = rootVnode;
   rootVnode.$elm$ = oldVNode.$elm$ = hostElm.shadowRoot || hostElm ;
-  useNativeShadowDom = !!(cmpMeta.$flags$ & 1 /* shadowDomEncapsulation */) && !(cmpMeta.$flags$ & 128 /* shadowNeedsScopedCss */);
   patch(oldVNode, rootVnode, isInitialLoad);
 };
 
@@ -721,7 +697,7 @@ var callRender = (hostRef, instance, elm, isInitialLoad) => {
   try {
     instance = instance.render() ;
     {
-      hostRef.$flags$ &= ~16 /* isQueuedForUpdate */;
+      hostRef.$flags$ &= -17 /* isQueuedForUpdate */;
     }
     {
       hostRef.$flags$ |= 2 /* hasRendered */;
@@ -770,7 +746,7 @@ var postUpdateComponent = (hostRef) => {
     if (hostRef.$flags$ & 512 /* needsRerender */) {
       nextTick(() => scheduleUpdate(hostRef, false));
     }
-    hostRef.$flags$ &= ~(4 /* isWaitingForChildren */ | 512 /* needsRerender */);
+    hostRef.$flags$ &= -517;
   }
 };
 var appDidLoad = (who) => {
@@ -825,7 +801,7 @@ var setValue = (ref, propName, newVal, cmpMeta) => {
 var proxyComponent = (Cstr, cmpMeta, flags) => {
   var _a, _b;
   const prototype = Cstr.prototype;
-  if (cmpMeta.$members$ || BUILD.watchCallback ) {
+  if (cmpMeta.$members$ || BUILD.watchCallback) {
     const members = Object.entries((_a = cmpMeta.$members$) != null ? _a : {});
     members.map(([memberName, [memberFlags]]) => {
       if ((memberFlags & 31 /* Prop */ || (flags & 2 /* proxyState */) && memberFlags & 32 /* State */)) {
@@ -974,7 +950,7 @@ var initializeComponent = async (elm, hostRef, cmpMeta, hmrVersionId) => {
         consoleError(e, elm);
       }
       {
-        hostRef.$flags$ &= ~8 /* isConstructingInstance */;
+        hostRef.$flags$ &= -9 /* isConstructingInstance */;
       }
       endNewInstance();
       fireConnectedCallback(hostRef.$lazyInstance$, elm);
@@ -1202,10 +1178,7 @@ var bootstrapLazy = (lazyBundles, options = {}) => {
 // src/runtime/nonce.ts
 var setNonce = (nonce) => plt.$nonce$ = nonce;
 
-exports.bootstrapLazy = bootstrapLazy;
-exports.h = h;
-exports.promiseResolve = promiseResolve;
-exports.registerInstance = registerInstance;
-exports.setNonce = setNonce;
+export { bootstrapLazy as b, h, promiseResolve as p, registerInstance as r, setNonce as s };
+//# sourceMappingURL=index-DiRK6UNu.js.map
 
-//# sourceMappingURL=index-4e1c0aaa.js.map
+//# sourceMappingURL=index-DiRK6UNu.js.map

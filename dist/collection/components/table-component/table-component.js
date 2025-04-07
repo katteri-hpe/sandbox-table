@@ -19,6 +19,7 @@ export class TableComponent {
         return {
             "headers": {
                 "type": "any",
+                "attribute": "headers",
                 "mutable": false,
                 "complexType": {
                     "original": "any",
@@ -33,11 +34,11 @@ export class TableComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "attribute": "headers",
                 "reflect": false
             },
             "rows": {
                 "type": "any",
+                "attribute": "rows",
                 "mutable": false,
                 "complexType": {
                     "original": "any",
@@ -52,7 +53,6 @@ export class TableComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "attribute": "rows",
                 "reflect": false
             }
         };

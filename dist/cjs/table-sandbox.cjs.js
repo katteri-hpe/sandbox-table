@@ -1,15 +1,15 @@
 'use strict';
 
-Object.defineProperty(exports, '__esModule', { value: true });
+var index = require('./index-BSiQsMzw.js');
+var appGlobals = require('./app-globals-V2Kpy_OQ.js');
 
-const index = require('./index-4e1c0aaa.js');
-const appGlobals = require('./app-globals-3a1e7e63.js');
-
+var _documentCurrentScript = typeof document !== 'undefined' ? document.currentScript : null;
 /*
- Stencil Client Patch Browser v4.27.2 | MIT Licensed | https://stenciljs.com
+ Stencil Client Patch Browser v4.29.1 | MIT Licensed | https://stenciljs.com
  */
+
 var patchBrowser = () => {
-  const importMeta = (typeof document === 'undefined' ? new (require('u' + 'rl').URL)('file:' + __filename).href : (document.currentScript && document.currentScript.src || new URL('table-sandbox.cjs.js', document.baseURI).href));
+  const importMeta = (typeof document === 'undefined' ? require('u' + 'rl').pathToFileURL(__filename).href : (_documentCurrentScript && _documentCurrentScript.tagName.toUpperCase() === 'SCRIPT' && _documentCurrentScript.src || new URL('table-sandbox.cjs.js', document.baseURI).href));
   const opts = {};
   if (importMeta !== "") {
     opts.resourcesUrl = new URL(".", importMeta).href;
@@ -23,5 +23,6 @@ patchBrowser().then(async (options) => {
 });
 
 exports.setNonce = index.setNonce;
+//# sourceMappingURL=table-sandbox.cjs.js.map
 
 //# sourceMappingURL=table-sandbox.cjs.js.map

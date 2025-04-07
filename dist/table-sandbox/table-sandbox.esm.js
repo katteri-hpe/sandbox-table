@@ -1,2 +1,2 @@
-import{p as a,b as e}from"./p-dea4a0a9.js";export{s as setNonce}from"./p-dea4a0a9.js";import{g as r}from"./p-e1255160.js";var o=()=>{const e=import.meta.url;const r={};if(e!==""){r.resourcesUrl=new URL(".",e).href}return a(r)};o().then((async a=>{await r();return e([["p-e4772f30",[[1,"table-component",{headers:[8],rows:[8]}]]]],a)}));
+import{p as r,b as o}from"./p-DiRK6UNu.js";export{s as setNonce}from"./p-DiRK6UNu.js";import{g as t}from"./p-DQuL1Twl.js";var a=()=>{const s=import.meta.url;const o={};if(s!==""){o.resourcesUrl=new URL(".",s).href}return r(o)};a().then((async r=>{await t();return o([["p-833d492b",[[1,"table-component",{headers:[8],rows:[8]}]]]],r)}));
 //# sourceMappingURL=table-sandbox.esm.js.map

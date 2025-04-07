@@ -1,9 +1,7 @@
 'use strict';
 
-Object.defineProperty(exports, '__esModule', { value: true });
-
-const index = require('./index-4e1c0aaa.js');
-const appGlobals = require('./app-globals-3a1e7e63.js');
+var index = require('./index-BSiQsMzw.js');
+var appGlobals = require('./app-globals-V2Kpy_OQ.js');
 
 const defineCustomElements = async (win, options) => {
   if (typeof window === 'undefined') return undefined;
@@ -13,5 +11,6 @@ const defineCustomElements = async (win, options) => {
 
 exports.setNonce = index.setNonce;
 exports.defineCustomElements = defineCustomElements;
+//# sourceMappingURL=loader.cjs.js.map
 
 //# sourceMappingURL=loader.cjs.js.map
