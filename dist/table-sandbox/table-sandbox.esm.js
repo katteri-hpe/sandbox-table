@@ -1,0 +1,2 @@
+import{p as a,b as e}from"./p-dea4a0a9.js";export{s as setNonce}from"./p-dea4a0a9.js";import{g as r}from"./p-e1255160.js";var o=()=>{const e=import.meta.url;const r={};if(e!==""){r.resourcesUrl=new URL(".",e).href}return a(r)};o().then((async a=>{await r();return e([["p-e4772f30",[[1,"table-component",{headers:[8],rows:[8]}]]]],a)}));
+//# sourceMappingURL=table-sandbox.esm.js.map

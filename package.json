@@ -1,0 +1,16 @@
+{
+  "name": "table-sandbox",
+  "version": "1.0.0",
+  "description": "Minimal version of the table package",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@stencil/core": "4.27",
+    "@types/react": "^19.1.0",
+    "react": "^19.1.0"
+  },
+  "scripts": {
+    "build": "stencil build",
+    "start": "stencil build --dev --watch"
+  }
+}
